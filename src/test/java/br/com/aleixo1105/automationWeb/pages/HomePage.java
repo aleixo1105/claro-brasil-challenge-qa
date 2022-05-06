@@ -11,12 +11,10 @@ public class HomePage {
     private HomeMap homeMap;
 
     public HomePage(WebDriver webDriver) {
-
         this.webDriver = webDriver;
         homeMap = new HomeMap();
         PageFactory.initElements(webDriver, homeMap);
     }
-
     public void clickBtnSignIn() {
         homeMap.btnSingInHome.click();
     }

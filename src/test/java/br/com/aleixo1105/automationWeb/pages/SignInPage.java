@@ -19,15 +19,12 @@ public class SignInPage {
         signInMap = new SignInMap();
         PageFactory.initElements(webDriver,signInMap);
     }
-
     public void inputEmailAddress() {
         signInMap.tbEmailAddress.sendKeys(email);
     }
-
     public void inputPassword() {
         signInMap.tbPassword.sendKeys(password);
     }
-
     public void clickBtnSubmitLogin() {
         signInMap.btnSubmitLogin.click();
     }

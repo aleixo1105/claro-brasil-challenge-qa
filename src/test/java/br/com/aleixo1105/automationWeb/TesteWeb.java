@@ -21,22 +21,16 @@ public class TesteWeb {
     HomePage homePage;
     SignInPage signInPage;
 
-
     @Before
     public void startTest(){
-
         driver = new Driver("chrome");
-
         webDriver = driver.getDriver();
-
         webDriver.get("http://automationpractice.com/");
         homePage = new HomePage(webDriver);
         signInPage = new SignInPage(webDriver);
     }
-
     @Test
     public void createAccountTest() {
-
         homePage.clickBtnSignIn();
 
         String xpathEmailCreate = "//*[@id=\"email_create\"]";
@@ -82,7 +76,6 @@ public class TesteWeb {
         String textAccount = webDriver.findElement(By.xpath("//*[@id=\"center_column\"]/p")).getText();
 
         Assert.assertEquals("Welcome to your account. Here you can manage all of your personal information and orders.", textAccount);
-
     }
 
     @Test
@@ -96,11 +89,8 @@ public class TesteWeb {
         }
 
         signInPage.inputEmailAddress();
-
         signInPage.inputPassword();
-
         signInPage.clickBtnSubmitLogin();
-
 
         try {
             Thread.sleep(5000);
@@ -111,10 +101,6 @@ public class TesteWeb {
 
         Assert.assertEquals("Welcome to your account. Here you can manage all of your personal information and orders.", textAccount);
     }
-
-
-
-
     @After
     public void closeTest(){
         webDriver.quit();

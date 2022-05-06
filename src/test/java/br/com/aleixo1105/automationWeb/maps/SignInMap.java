@@ -14,9 +14,4 @@ public class SignInMap {
     @FindBy(xpath="//*[@id=\"SubmitLogin\"]")
     public WebElement btnSubmitLogin;
 
-
-
-
-
-
 }
