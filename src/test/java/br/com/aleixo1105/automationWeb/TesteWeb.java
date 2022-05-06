@@ -1,45 +1,49 @@
 package br.com.aleixo1105.automationWeb;
 
+import br.com.aleixo1105.automationWeb.core.Driver;
+import br.com.aleixo1105.automationWeb.pages.HomePage;
+import br.com.aleixo1105.automationWeb.pages.SignInPage;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import java.lang.Thread;
 
 public class TesteWeb {
 
-    ChromeDriver driver;
-    String email = "teste20221234567899s@gmail.com";
-    String password = "123456";
+    WebDriver webDriver;
+    Driver driver;
+    HomePage homePage;
+    SignInPage signInPage;
+
 
     @Before
     public void startTest(){
-        WebDriverManager.chromedriver().setup();
 
+        driver = new Driver("chrome");
 
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.get("http://automationpractice.com/");
+        webDriver = driver.getDriver();
+
+        webDriver.get("http://automationpractice.com/");
+        homePage = new HomePage(webDriver);
+        signInPage = new SignInPage(webDriver);
     }
-
 
     @Test
     public void createAccountTest() {
 
-
-        String xpathSingInHome = "//*[@id=\"header\"]/div[2]//a";
-
-        driver.findElement(By.xpath(xpathSingInHome)).click();
+        homePage.clickBtnSignIn();
 
         String xpathEmailCreate = "//*[@id=\"email_create\"]";
         String xpathCreateAccount = "//*[@id=\"SubmitCreate\"]";
 
-        driver.findElement(By.xpath(xpathEmailCreate)).sendKeys(email);
-        driver.findElement(By.xpath(xpathCreateAccount)).click();
+        webDriver.findElement(By.xpath(xpathEmailCreate)).sendKeys("email");
+        webDriver.findElement(By.xpath(xpathCreateAccount)).click();
 
         String xpathFirstName = "//div/div[2]/input";
         String xpathLastName = "//*[@id='customer_lastname']";
@@ -60,23 +64,22 @@ public class TesteWeb {
         } catch (Exception erro) {
         }
 
-        driver.findElement(By.xpath(xpathFirstName)).sendKeys("Marcel");
-        driver.findElement(By.xpath(xpathLastName)).sendKeys("Aleixo");
-        /*driver.findElement(By.xpath(xpathEmail)).sendKeys(email);*/
-        driver.findElement(By.xpath(xpathPassword)).sendKeys(password);
-        driver.findElement(By.xpath(xpathAddressFirstName)).clear();
-        driver.findElement(By.xpath(xpathAddressFirstName)).sendKeys("Avenida Maria Marreira");
-        driver.findElement(By.xpath(xpathAddressLastName)).clear();
-        driver.findElement(By.xpath(xpathAddressLastName)).sendKeys("Conjunto");
-        driver.findElement(By.xpath(xpathAddress)).sendKeys("Nova Cidade");
-        driver.findElement(By.xpath(xpathCity)).sendKeys("Manaus");
-        driver.findElement(By.xpath(xpathState)).sendKeys("Virginia");
-        driver.findElement(By.xpath(xpathCountry)).sendKeys("United States");
-        driver.findElement(By.xpath(xpathPostalCode)).sendKeys("88888");
-        driver.findElement(By.xpath(xpathMobilePhone)).sendKeys("92981033265");
-        driver.findElement(By.xpath(xpathRegister)).click();
+        webDriver.findElement(By.xpath(xpathFirstName)).sendKeys("Marcel");
+        webDriver.findElement(By.xpath(xpathLastName)).sendKeys("Aleixo");
+        webDriver.findElement(By.xpath(xpathPassword)).sendKeys("password");
+        webDriver.findElement(By.xpath(xpathAddressFirstName)).clear();
+        webDriver.findElement(By.xpath(xpathAddressFirstName)).sendKeys("Avenida Maria Marreira");
+        webDriver.findElement(By.xpath(xpathAddressLastName)).clear();
+        webDriver.findElement(By.xpath(xpathAddressLastName)).sendKeys("Conjunto");
+        webDriver.findElement(By.xpath(xpathAddress)).sendKeys("Nova Cidade");
+        webDriver.findElement(By.xpath(xpathCity)).sendKeys("Manaus");
+        webDriver.findElement(By.xpath(xpathState)).sendKeys("Virginia");
+        webDriver.findElement(By.xpath(xpathCountry)).sendKeys("United States");
+        webDriver.findElement(By.xpath(xpathPostalCode)).sendKeys("88888");
+        webDriver.findElement(By.xpath(xpathMobilePhone)).sendKeys("92981033265");
+        webDriver.findElement(By.xpath(xpathRegister)).click();
 
-        String textAccount = driver.findElement(By.xpath("//*[@id=\"center_column\"]/p")).getText();
+        String textAccount = webDriver.findElement(By.xpath("//*[@id=\"center_column\"]/p")).getText();
 
         Assert.assertEquals("Welcome to your account. Here you can manage all of your personal information and orders.", textAccount);
 
@@ -85,33 +88,35 @@ public class TesteWeb {
     @Test
     public void loginAccountTest() {
 
-        String xpathSingInHome = "//*[@id=\"header\"]/div[2]//a";
-
-        driver.findElement(By.xpath(xpathSingInHome)).click();
-
-        String xpathEmailAddress = "//*[@id=\"email\"]";
-        String xpathPassword = "//*[@id=\"passwd\"]";
-        String xpathSubmitLogin = "//*[@id=\"SubmitLogin\"]";
-
-        driver.findElement(By.xpath(xpathEmailAddress)).sendKeys(email);
-        driver.findElement(By.xpath(xpathPassword)).sendKeys(password);
-        driver.findElement(By.xpath(xpathSubmitLogin)).click();
+        homePage.clickBtnSignIn();
 
         try {
             Thread.sleep(5000);
         } catch (Exception erro) {
         }
 
-        String textAccount = driver.findElement(By.xpath("//*[@id=\"center_column\"]/p")).getText();
+        signInPage.inputEmailAddress();
+
+        signInPage.inputPassword();
+
+        signInPage.clickBtnSubmitLogin();
+
+
+        try {
+            Thread.sleep(5000);
+        } catch (Exception erro) {
+        }
+
+        String textAccount = webDriver.findElement(By.xpath("//*[@id=\"center_column\"]/p")).getText();
 
         Assert.assertEquals("Welcome to your account. Here you can manage all of your personal information and orders.", textAccount);
-
     }
+
+
+
 
     @After
     public void closeTest(){
-
-        driver.quit();
+        webDriver.quit();
     }
-
 }
