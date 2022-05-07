@@ -7,11 +7,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
 public class SignInPage {
+
     public WebDriver webDriver;
     private SignInMap signInMap;
-
-    String email = "teste20221234567899s@gmail.com";
-    String password = "123456";
 
     public SignInPage(WebDriver webDriver) {
 
@@ -19,13 +17,24 @@ public class SignInPage {
         signInMap = new SignInMap();
         PageFactory.initElements(webDriver,signInMap);
     }
-    public void inputEmailAddress() {
+
+       /*-----------Login------------*/
+    public void inputEmailAddress(String email) {
         signInMap.tbEmailAddress.sendKeys(email);
     }
-    public void inputPassword() {
+    public void inputPassword(String password) {
         signInMap.tbPassword.sendKeys(password);
     }
     public void clickBtnSubmitLogin() {
         signInMap.btnSubmitLogin.click();
+    }
+
+
+    /*--------New Account------------*/
+    public void inputEmailCreate(String email) {
+        signInMap.tbCreateAccountEmail.sendKeys(email);
+    }
+    public void clickBtnCreateAccount() {
+        signInMap.btnCreateAccount.click();
     }
 }
