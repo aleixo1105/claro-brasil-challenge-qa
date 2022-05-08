@@ -21,4 +21,9 @@ public class SignInMap {
     @FindBy(xpath ="//*[@id=\"SubmitCreate\"]")
     public WebElement btnCreateAccount;
 
+    @FindBy(xpath="//*[@id=\"center_column\"]/div[1]/ol/li")
+    public WebElement authenticationFailed;
+
+    @FindBy(xpath="//*[@id=\"create_account_error\"]/ol/li")
+    public WebElement authenticationEmailAlreadyRegistered;
 }

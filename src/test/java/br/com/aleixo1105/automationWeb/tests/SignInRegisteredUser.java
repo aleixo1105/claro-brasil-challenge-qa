@@ -5,20 +5,21 @@ import br.com.aleixo1105.automationWeb.pages.CreateAccountPage;
 import br.com.aleixo1105.automationWeb.pages.HomePage;
 import br.com.aleixo1105.automationWeb.pages.MyAccountPage;
 import br.com.aleixo1105.automationWeb.pages.SignInPage;
-import com.github.javafaker.Faker;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
+import java.lang.Thread;
 
-public class CreateAccount {
+public class SignInRegisteredUser {
     WebDriver webDriver;
     Driver driver;
     HomePage homePage;
     SignInPage signInPage;
     CreateAccountPage createAccountPage;
     MyAccountPage myAccountPage;
-    Faker faker;
+    String oldEmail = "teste20221234567899s@gmail.com";
+    String password = "123456";
 
     @Before
     public void startTest(){
@@ -29,43 +30,26 @@ public class CreateAccount {
         signInPage = new SignInPage(webDriver);
         createAccountPage = new CreateAccountPage(webDriver);
         myAccountPage = new MyAccountPage(webDriver);
-        faker = new Faker();
     }
+
     @Test
-    public void createAccount() {
+    public void signInRegisteredUser() {
+
         homePage.clickBtnSignIn();
-
-        try {
-            Thread.sleep(2000);
-        } catch (Exception erro) {
-        }
-
-        signInPage.inputEmailCreate(faker.internet().emailAddress());
-        signInPage.clickBtnCreateAccount();
-
-        try {
-            Thread.sleep(3000);
-        } catch (Exception erro) {
-        }
-
-        createAccountPage.inputFirstName(faker.name().firstName());
-        createAccountPage.inputLastName(faker.name().lastName());
-        createAccountPage.inputPassword(faker.internet().password());
-        createAccountPage.inputAddressFirstName(faker.address().firstName());
-        createAccountPage.inputAddressLastName(faker.address().lastName());
-        createAccountPage.inputAddress(faker.address().streetAddress());
-        createAccountPage.inputCity(faker.address().city());
-        createAccountPage.inputState(faker.address().state());
-        createAccountPage.inputPostalCode(faker.address().zipCode());
-        createAccountPage.inputCountry("United States");
-        createAccountPage.inputMobilePhone(faker.phoneNumber().cellPhone());
-        createAccountPage.clickSubmitAccount();
 
         try {
             Thread.sleep(1000);
         } catch (Exception erro) {
         }
 
+        signInPage.inputEmailSignIn(oldEmail);
+        signInPage.inputPassword(password);
+        signInPage.clickBtnSubmitLogin();
+
+        try {
+            Thread.sleep(1000);
+        } catch (Exception erro) {
+        }
         myAccountPage.validateMyAccountPage();
     }
 
