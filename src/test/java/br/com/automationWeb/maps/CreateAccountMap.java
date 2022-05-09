@@ -1,4 +1,4 @@
-package br.com.aleixo1105.automationWeb.maps;
+package br.com.automationWeb.maps;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 
 public class CreateAccountMap {
 
-    @FindBy(xpath="//div/div[2]/input")
+    @FindBy(xpath="//*[@id=\"customer_firstname\"]")
     public WebElement tbFirstName;
 
     @FindBy(xpath="//*[@id='customer_lastname']")

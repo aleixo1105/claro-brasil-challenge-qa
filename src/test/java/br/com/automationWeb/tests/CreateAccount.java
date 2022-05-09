@@ -1,10 +1,10 @@
-package br.com.aleixo1105.automationWeb.tests;
+package br.com.automationWeb.tests;
 
-import br.com.aleixo1105.automationWeb.core.Driver;
-import br.com.aleixo1105.automationWeb.pages.CreateAccountPage;
-import br.com.aleixo1105.automationWeb.pages.HomePage;
-import br.com.aleixo1105.automationWeb.pages.MyAccountPage;
-import br.com.aleixo1105.automationWeb.pages.SignInPage;
+import br.com.automationWeb.core.Driver;
+import br.com.automationWeb.pages.CreateAccountPage;
+import br.com.automationWeb.pages.HomePage;
+import br.com.automationWeb.pages.MyAccountPage;
+import br.com.automationWeb.pages.SignInPage;
 import com.github.javafaker.Faker;
 import org.junit.After;
 import org.junit.Before;
@@ -44,7 +44,7 @@ public class CreateAccount {
         signInPage.clickBtnCreateAccount();
 
         try {
-            Thread.sleep(3000);
+            Thread.sleep(4000);
         } catch (Exception erro) {
         }
 
@@ -62,7 +62,7 @@ public class CreateAccount {
         createAccountPage.clickSubmitAccount();
 
         try {
-            Thread.sleep(1000);
+            Thread.sleep(2000);
         } catch (Exception erro) {
         }
 

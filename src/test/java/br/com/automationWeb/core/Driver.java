@@ -1,4 +1,4 @@
-package br.com.aleixo1105.automationWeb.core;
+package br.com.automationWeb.core;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;

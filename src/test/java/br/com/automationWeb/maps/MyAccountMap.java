@@ -1,4 +1,4 @@
-package br.com.aleixo1105.automationWeb.maps;
+package br.com.automationWeb.maps;
 
 import org.junit.Assert;
 import org.openqa.selenium.By;

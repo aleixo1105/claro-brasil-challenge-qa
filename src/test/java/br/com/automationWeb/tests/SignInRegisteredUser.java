@@ -1,28 +1,25 @@
-package br.com.aleixo1105.automationWeb.tests;
+package br.com.automationWeb.tests;
 
-import br.com.aleixo1105.automationWeb.core.Driver;
-import br.com.aleixo1105.automationWeb.pages.CreateAccountPage;
-import br.com.aleixo1105.automationWeb.pages.HomePage;
-import br.com.aleixo1105.automationWeb.pages.MyAccountPage;
-import br.com.aleixo1105.automationWeb.pages.SignInPage;
-import com.github.javafaker.Faker;
+import br.com.automationWeb.core.Driver;
+import br.com.automationWeb.pages.CreateAccountPage;
+import br.com.automationWeb.pages.HomePage;
+import br.com.automationWeb.pages.MyAccountPage;
+import br.com.automationWeb.pages.SignInPage;
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import java.lang.Thread;
 
-public class CreateAccountEmailRegistered {
-
+public class SignInRegisteredUser {
     WebDriver webDriver;
     Driver driver;
     HomePage homePage;
     SignInPage signInPage;
     CreateAccountPage createAccountPage;
     MyAccountPage myAccountPage;
-    Faker faker;
     String oldEmail = "teste20221234567899s@gmail.com";
+    String password = "123456";
 
     @Before
     public void startTest(){
@@ -33,26 +30,27 @@ public class CreateAccountEmailRegistered {
         signInPage = new SignInPage(webDriver);
         createAccountPage = new CreateAccountPage(webDriver);
         myAccountPage = new MyAccountPage(webDriver);
-        faker = new Faker();
     }
 
     @Test
-    public void createAccountEmailRegistered() {
+    public void signInRegisteredUser() {
+
         homePage.clickBtnSignIn();
 
         try {
-            Thread.sleep(3000);
+            Thread.sleep(1000);
         } catch (Exception erro) {
         }
 
-        signInPage.inputEmailCreate(oldEmail);
-        signInPage.clickBtnCreateAccount();
+        signInPage.inputEmailSignIn(oldEmail);
+        signInPage.inputPassword(password);
+        signInPage.clickBtnSubmitLogin();
 
         try {
-            Thread.sleep(6000);
+            Thread.sleep(1000);
         } catch (Exception erro) {
         }
-        signInPage.checkRegisteredEmail();
+        myAccountPage.validateMyAccountPage();
     }
 
     @After

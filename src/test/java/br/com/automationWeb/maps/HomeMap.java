@@ -1,4 +1,4 @@
-package br.com.aleixo1105.automationWeb.maps;
+package br.com.automationWeb.maps;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;

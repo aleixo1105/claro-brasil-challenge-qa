@@ -1,10 +1,10 @@
-package br.com.aleixo1105.automationWeb.tests;
+package br.com.automationWeb.tests;
 
-import br.com.aleixo1105.automationWeb.core.Driver;
-import br.com.aleixo1105.automationWeb.pages.CreateAccountPage;
-import br.com.aleixo1105.automationWeb.pages.HomePage;
-import br.com.aleixo1105.automationWeb.pages.MyAccountPage;
-import br.com.aleixo1105.automationWeb.pages.SignInPage;
+import br.com.automationWeb.core.Driver;
+import br.com.automationWeb.pages.CreateAccountPage;
+import br.com.automationWeb.pages.HomePage;
+import br.com.automationWeb.pages.MyAccountPage;
+import br.com.automationWeb.pages.SignInPage;
 import com.github.javafaker.Faker;
 import org.junit.After;
 import org.junit.Before;
@@ -13,7 +13,7 @@ import org.openqa.selenium.WebDriver;
 import java.lang.Thread;
 
 
-public class SignInWrongPassword {
+public class SignInUnregisteredUser {
     WebDriver webDriver;
     Driver driver;
     HomePage homePage;
@@ -21,7 +21,6 @@ public class SignInWrongPassword {
     CreateAccountPage createAccountPage;
     MyAccountPage myAccountPage;
     Faker faker;
-    String oldEmail = "teste20221234567899s@gmail.com";
 
     @Before
     public void startTest(){
@@ -36,21 +35,21 @@ public class SignInWrongPassword {
     }
 
     @Test
-    public void signInWrongPassword() {
+    public void signInUnregisteredUser() {
 
         homePage.clickBtnSignIn();
 
         try {
-            Thread.sleep(1000);
+            Thread.sleep(2000);
         } catch (Exception erro) {
         }
 
-        signInPage.inputEmailSignIn(oldEmail);
+        signInPage.inputEmailSignIn(faker.internet().emailAddress());
         signInPage.inputPassword(faker.internet().password());
         signInPage.clickBtnSubmitLogin();
 
         try {
-            Thread.sleep(1000);
+            Thread.sleep(2000);
         } catch (Exception erro) {
         }
         signInPage.checkInvalidAccount();

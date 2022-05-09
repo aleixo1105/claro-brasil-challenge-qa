@@ -1,7 +1,6 @@
-package br.com.aleixo1105.automationWeb.pages;
+package br.com.automationWeb.pages;
 
-import br.com.aleixo1105.automationWeb.maps.CreateAccountMap;
-import org.openqa.selenium.By;
+import br.com.automationWeb.maps.CreateAccountMap;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
