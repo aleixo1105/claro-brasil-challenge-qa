@@ -1,75 +1,67 @@
-Claro Brasil Challenge - QA
-===================
+<h1 align="center"> Automation Practice </h1>
+My Store - www.automationpractice.com
 
-O objetivo deste desafio é avaliar a competência técnica dos candidatos a QA na **Claro Brasil**. Será solicitado a especificação dos cenários de teste assim como a automação dos testes para plataformas Android, iOS e Web.
+Instalação de Softwares necessarios:
+1. IntelliJ
+2. Java: JRE e JDK
+3. Maven
 
-----------
+Configurar as variaveis de ambiente:
+1. JAVA_HOME 
+2. Apache Maven 
 
-Especificações Técnicas
--------------
+Dependencias usadas no Maven:
+1. selenium-java
+2. junit
+3. Webdriver Manager
+4. Javafaker
 
-- **Plataforma :** Android, iOS e Web (Google Chrome)
-- **Linguagem:** Java
-- **Idioma de escrita do código:** Inglês
 
-----------
+-CASO DE TESTE:
 
-Requisitos do Projeto
--------------
+Cadastrar usuario valido
+   1. Acessar o site: www.automationpractice.com.
+   2. Clicar no botão "SignIn".
+   3. Inserir o endereço de email valido(ainda não cadastrado no site) em "CREATE AN ACCOUNT".
 
-#### Aplicações
+   ![img_1.png](img_1.png)
+   4. Clicar no botão "Create an account".
+   5. Preencher todos os campos obrigatorios.
+   6. Clicar no botão "Register".
+   7. Deverá ser exibido a pagina "My Account" com usuario logado.
 
- - Web: http://automationpractice.com/
- - Android: app-android-calculator.apk [download](https://drive.google.com/file/d/10qFe7tDa11Je_ziGSHwcdBKf1Ng8Aa7K/view?usp=sharing)
- - iOS: SimpleCalculator.ipa [download](https://drive.google.com/file/d/1ctB1SECbQh-fBO8j_x1vMveOoytqj0ub/view?usp=sharing)
+![img.png](img.png)
 
-#### Funcionalidades teste Web
 
- - Realizar Cadastro
- - Realizar Login
+Cadastrar usuario com conta em uso
+   1. Acessar o site: www.automationpractice.com.
+   2. Clicar no botão SignIn.
+   3. Inserir o endereço de email valido(já cadastrado no site) em "CREATE AN ACCOUNT"
+   4. Clicar no botão "Create an account" (deverá mostrar uma mensagem informando que o email já está em uso)
 
-#### Funcionalidades teste Mobile
 
- - Realizar soma
- - Realizar subtração
- - Realizar multiplicação
- - Realizar divisão
 
-#### Requisitos obrigatórios
+Fazer login com usuario valido
+   1. Acessar o site: www.automationpractice.com.
+   2. Clicar no botão SignIn.
+   3. Inserir o endereço de email valido e senha(já cadastrado no site)
+   4. Clicar no botão "Sign in".
+![img_3.png](img_3.png)
+   5. Deverá ser exibido a pagina "My Account" com usuario logado.
 
- - Utilização de Page Objects
- - Utilização do Cucumber
- - Para automação Android e iOS utilizar Appium
- - Para automação Web utilizar Selenium
- - Execução dos testes em devices físico/emulador
 
-#### Requisitos desejáveis
+Fazer login com usuario não criado
+   1. Acessar o site: www.automationpractice.com.
+   2. Clicar no botão SignIn.
+   3. Inserir o endereço de email valido (não cadastrado no site) e senha.
+   4. Clicar no botão "Sign in".
+   ![img_4.png](img_4.png)
 
- - Uso de apenas um projeto para o teste Android e iOS
- - Uso de massa de dados para execução
- - Execução dos teste em paralelo
- - Além da execução em devices fisco/emulador, preparar projeto para execução no BrowserStack
 
-----------
-
-Critérios de avaliação
--------------
-
- - Cenários de teste descritos (positivos e negativos) no Cucumber
- - Qualidade de escrita do código
- - Organização do projeto
- - Utilização do Git (quantidade e descrição dos commits, utilização ou não de branches)
-
-----------
-
-Instruções de entrega
--------------
-
- 1. Crie um fork do repositório no seu GitHub
- 2. Faça o push do código desenvolvido no seu Github
- 3. Inclua um arquivo chamado COMMENTS.md explicando
-	 - Explicação rápida da decisão arquitetura utilizada e o motivo
-	 - Lista de bibliotecas de terceiros utilizadas
-	 - O que você melhoraria se tivesse mais tempo
-	 - Quais requisitos obrigatórios e desejáveis não foram entregues e o motivo
- 4. Informe ao recrutador quando concluir o desafio junto com o link do repositório
+Fazer login com usuario valido e senha incorreta
+   1. Acessar o site: www.automationpractice.com.
+   2. Clicar no botão SignIn.
+   3. Inserir o endereço de email valido (já cadastrado no site).
+   4. Inserir a senha incorreta.
+   5. Clicar no botão "Sign in".
+   ![img_4.png](img_4.png)
